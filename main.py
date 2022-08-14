@@ -12,7 +12,7 @@ from kivy.base import platform
 
 from kivy.uix.label import Label
 
-class TestApp(MDApp):
+class MinervasApp(MDApp):
 
     processing_uri = False
 
@@ -48,22 +48,6 @@ class TestApp(MDApp):
 
         # on_dropfile event is fired. Many Bothans died to  bring us this information...
 
-        if platform == 'ios':
-
-            # Set this to True elsewhere in your code if you are pausing to wait for a
-
-            # deeplink redirect back to your app (e.g. after FB OAUTH)
-
-            if self.processing_uri:
-
-                self.processing_uri = False
-
-                Clock.schedule_once(self.resume_tasks, -1)
-
-                Clock.schedule_once(self.on_resume, -1)
-
-        return True
-
     def resume_tasks(self, *args):
 
         Window._pause_loop = False
@@ -90,12 +74,6 @@ class TestApp(MDApp):
 
             self.process_deep_link('')
 
-    def ios_message(self, window, uri):
-
-        # send full URI to a cross-platform function to process
-
-        self.process_deep_link(uri)
-
     def process_deep_link(self, uri):
 
         # Validate, parse, do things...
@@ -112,16 +90,11 @@ class TestApp(MDApp):
 
 if __name__ == '__main__':
 
-    app_instance = TestApp()
+    app_instance = MinervasApp()
 
     if platform == 'android':
 
         import android.activity
 
         android.activity.bind(on_new_intent=app_instance.android_message)
-
-    elif platform == 'ios':
-
-        Window.bind(on_dropfile=app_instance.ios_message)
-
     app_instance.run()
