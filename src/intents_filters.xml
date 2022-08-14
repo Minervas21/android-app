@@ -1,6 +1,6 @@
 <!-- http url scheme as http://myapp.org -->
 <intent-filter>
-    <data android:scheme="http" android:host="minerva.org"/>
+    <data android:scheme="https" android:host="minervas.app"/>
     <action android:name="android.intent.action.VIEW"/>
     <category android:name="android.intent.category.BROWSABLE"/>
     <category android:name="android.intent.category.DEFAULT"/>
