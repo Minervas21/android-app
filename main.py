@@ -1,4 +1,3 @@
-
 #!python
 
 from kivy.app import App
@@ -31,7 +30,7 @@ class TestApp(App):
 
         from jnius import autoclass
 
-        PythonActivity = autoclass('org.kivy.android.PythonActivity')
+        PythonActivity = autoclass('org.renpy.android.PythonActivity')
 
         activity = PythonActivity.mActivity
 
