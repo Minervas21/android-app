@@ -12,7 +12,7 @@ from kivy.base import platform
 
 from kivy.uix.label import Label
 
-class TestApp(App):
+class TestApp(MDApp):
 
     processing_uri = False
 
