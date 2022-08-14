@@ -1,11 +1,11 @@
-<!-- http url scheme as http://myapp.org -->
+<!-- https url scheme as https://minervas.app -->
 <intent-filter>
-    <data android:scheme="http" android:host="minerva.org"/>
+    <data android:scheme="https" android:host="minervas.app"/>
     <action android:name="android.intent.action.VIEW"/>
     <category android:name="android.intent.category.BROWSABLE"/>
     <category android:name="android.intent.category.DEFAULT"/>
 </intent-filter>
-<!-- direct app scheme myapp:// -->
+<!-- direct app scheme minervas:// -->
 <intent-filter>
     <data android:scheme="minervas://" android:host="*"/>
     <action android:name="android.intent.action.VIEW"/>
