@@ -1,13 +1,13 @@
 [app]
 
 # (str) Title of your application
-title = Intent Tester
+title = minervasapp
 
 # (str) Package name
-package.name = intenttesterfvck
+package.name = minervasapp
 
 # (str) Package domain (needed for android/ios packaging)
-package.domain = org.test.fvck
+package.domain = com.minervas.blah
 
 # (str) Source code where the main.py live
 source.dir = src/
@@ -19,10 +19,10 @@ source.include_exts = py,png,jpg,kv,atlas
 #source.include_patterns = assets/*,images/*.png
 
 # (list) Source files to exclude (let empty to not exclude anything)
-source.exclude_exts = spec
+#source.exclude_exts = spec
 
 # (list) List of directory to exclude (let empty to not exclude anything)
-source.exclude_dirs = tests, bin
+#source.exclude_dirs = tests, bin, venv
 
 # (list) List of exclusions using pattern matching
 #source.exclude_patterns = license,images/*/*.jpg
@@ -42,9 +42,6 @@ requirements = python3,kivy==2.1.0,https://github.com/kivymd/KivyMD/archive/mast
 # Sets custom source for any requirements with recipes
 # requirements.source.kivy = ../../kivy
 
-# (list) Garden requirements
-#garden_requirements =
-
 # (str) Presplash of the application
 #presplash.filename = %(source.dir)s/data/presplash.png
 
@@ -52,7 +49,7 @@ requirements = python3,kivy==2.1.0,https://github.com/kivymd/KivyMD/archive/mast
 #icon.filename = %(source.dir)s/data/icon.png
 
 # (str) Supported orientation (one of landscape, sensorLandscape, portrait or all)
-orientation = all
+orientation = portrait
 
 # (list) List of service to declare
 #services = NAME:ENTRYPOINT_TO_PY,NAME2:ENTRYPOINT2_TO_PY
@@ -75,20 +72,29 @@ osx.kivy_version = 1.9.1
 #
 
 # (bool) Indicate if the application should be fullscreen or not
-fullscreen = 1
+fullscreen = 0
 
-# (string) Presplash background color (for new android toolchain)
+# (string) Presplash background color (for android toolchain)
 # Supported formats are: #RRGGBB #AARRGGBB or one of the following names:
 # red, blue, green, black, white, gray, cyan, magenta, yellow, lightgray,
 # darkgray, grey, lightgrey, darkgrey, aqua, fuchsia, lime, maroon, navy,
 # olive, purple, silver, teal.
 #android.presplash_color = #FFFFFF
 
+# (string) Presplash animation using Lottie format.
+# see https://lottiefiles.com/ for examples and https://airbnb.design/lottie/
+# for general documentation.
+# Lottie files can be created using various tools, like Adobe After Effect or Synfig.
+android.presplash_lottie = 
+
 # (list) Permissions
 #android.permissions = INTERNET
 
+# (list) features (adds uses-feature -tags to manifest)
+#android.features = android.hardware.usb.host
+
 # (int) Target Android API, should be as high as possible.
-android.api = 30
+android.api = 28
 
 # (int) Minimum API your APK will support.
 #android.minapi = 21
@@ -129,7 +135,7 @@ android.api = 30
 #android.entrypoint = org.renpy.android.PythonActivity
 
 # (str) Android app theme, default is ok for Kivy-based app
-android.apptheme = "@android:style/Theme.NoTitleBar"
+# android.apptheme = "@android:style/Theme.NoTitleBar"
 
 # (list) Pattern to whitelist for the whole project
 #android.whitelist =
@@ -150,12 +156,10 @@ android.apptheme = "@android:style/Theme.NoTitleBar"
 # directory containing the files)
 #android.add_src =
 
-# (list) Android AAR archives to add (currently works only with sdl2_gradle
-# bootstrap)
+# (list) Android AAR archives to add
 #android.add_aars =
 
-# (list) Gradle dependencies to add (currently works only with sdl2_gradle
-# bootstrap)
+# (list) Gradle dependencies to add
 #android.gradle_dependencies =
 
 # (list) add java compile options
@@ -173,7 +177,7 @@ android.apptheme = "@android:style/Theme.NoTitleBar"
 # can be necessary to solve conflicts in gradle_dependencies
 # please enclose in double quotes 
 # e.g. android.add_packaging_options = "exclude 'META-INF/common.kotlin_module'", "exclude 'META-INF/*.kotlin_module'"
-#android.add_gradle_repositories =
+#android.add_packaging_options =
 
 # (list) Java classes to add as activities to the manifest.
 #android.add_activities = com.example.ExampleActivity
@@ -213,7 +217,7 @@ android.manifest.launch_mode = singleTask
 #android.uses_library =
 
 # (str) Android logcat filters to use
-android.logcat_filters = *:S python:D
+#android.logcat_filters = *:S python:D
 
 # (bool) Copy library instead of making a libpymodules.so
 #android.copy_libs = 1
@@ -225,6 +229,12 @@ android.arch = armeabi-v7a
 # this is not the same as app version and should only be edited if you know what you're doing
 # android.numeric_version = 1
 
+# (bool) enables Android auto backup feature (Android API >=23)
+android.allow_backup = True
+
+# (str) XML file for custom backup rules (see official auto backup documentation)
+# android.backup_rules =
+
 #
 # Python for android (p4a) specific
 #
@@ -233,7 +243,7 @@ android.arch = armeabi-v7a
 #p4a.fork = kivy
 
 # (str) python-for-android branch to use, defaults to master
-#p4a.branch = master
+p4a.branch = develop
 
 # (str) python-for-android git clone directory (if empty, it will be automatically cloned from github)
 #p4a.source_dir =
@@ -249,6 +259,13 @@ android.arch = armeabi-v7a
 
 # (int) port number to specify an explicit --port= p4a argument (eg for bootstrap flask)
 #p4a.port =
+
+# Control passing the --use-setup-py vs --ignore-setup-py to p4a
+# "in the future" --use-setup-py is going to be the default behaviour in p4a, right now it is not
+# Setting this to false will pass --ignore-setup-py, true will pass --use-setup-py
+# NOTE: this is general setuptools integration, having pyproject.toml is enough, no need to generate
+# setup.py if you're using Poetry, but you need to add "toml" to source.include_exts.
+#p4a.setup_py = false
 
 
 #
@@ -266,7 +283,10 @@ ios.kivy_ios_branch = master
 #ios.ios_deploy_dir = ../ios_deploy
 # Or specify URL and branch
 ios.ios_deploy_url = https://github.com/phonegap/ios-deploy
-ios.ios_deploy_branch = 1.7.0
+ios.ios_deploy_branch = 1.10.0
+
+# (bool) Whether or not to sign the code
+ios.codesign.allowed = false
 
 # (str) Name of the certificate to use for signing the debug version
 # Get a list of available identities: buildozer ios list_identities
