@@ -4,7 +4,7 @@
 title = Intent Tester
 
 # (str) Package name
-package.name = intenttester fvck
+package.name = intenttesterfvck
 
 # (str) Package domain (needed for android/ios packaging)
 package.domain = org.test.fvck
