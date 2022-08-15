@@ -46,9 +46,10 @@ class IndexScreen(MDScreen):
 class MinervasApp(MDApp):
 
     processing_uri = False
+    path=os.path.dirname(os.path.abspath(__file__))
 
     def build(self):
-    		Builder.load_string(kv)
+    		Builder.load_file(self.path+'/minervas.kv')
     		sm = ScreenManager()
     		sm.add_widget(LoginScreen(name='login'))
     		sm.add_widget(IndexScreen(name='index'))
