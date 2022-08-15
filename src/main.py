@@ -11,19 +11,23 @@ from kivy.logger import Logger
 
 from kivy.base import platform
 from kivy.uix.screenmanager import ScreenManager
+from kivy.lang import Builder
 from kivymd.uix.screen import MDScreen
 
 from kivy.uix.label import Label
 class LoginScreen(MDScreen):
 	pass
-
+class IndexScreen(MDScreen):
+	pass
 class MinervasApp(MDApp):
 
     processing_uri = False
 
     def build(self):
+    		Builder.load_file('minervas.kv')
     		sm = ScreenManager()
     		sm.add_widget(LoginScreen(name='login'))
+    		sm.add_widget(IndexScreen(name='index'))
     		sm.current='login'
     		return sm
 
