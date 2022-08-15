@@ -1,6 +1,7 @@
 
 #!python
-
+from jnius import cast
+from jnius import autoclass
 from kivymd.app import MDApp
 
 from kivy.core.window import Window
