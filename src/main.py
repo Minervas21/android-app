@@ -10,7 +10,7 @@ from kivy.clock import Clock, mainthread
 from kivy.logger import Logger
 
 from kivy.base import platform
-from kivy.uix.screenmanager import ScreenManager
+from kivy.uix.screenmanager import ScreenManager,SwapTransition
 from kivy.lang import Builder
 from kivymd.uix.screen import MDScreen
 
@@ -27,14 +27,15 @@ class LoginScreen(MDScreen):
 		currentActivity.startActivity(intent)
 class IndexScreen(MDScreen):
 	pass
+sm = ScreenManager(transition=SwapTransition())
 class MinervasApp(MDApp):
 
     processing_uri = False
     path=os.path.dirname(os.path.abspath(__file__))
+    token=None
 
     def build(self):
     		Builder.load_file(self.path+'/minervas.kv')
-    		sm = ScreenManager()
     		sm.add_widget(LoginScreen(name='login'))
     		sm.add_widget(IndexScreen(name='index'))
     		sm.current='login'
@@ -123,13 +124,11 @@ class MinervasApp(MDApp):
         Logger.info("URI INTENT FILTER: " + uri)
 
         if uri == '':
-
-            self.root.text = 'No Intent Data ! (no uri)'
-
+        	pass
         else:
-
-            self.root.text = uri
-
+        	self.token= uri
+        	sm.current='index'
+        	
 if __name__ == '__main__':
 
     app_instance = MinervasApp()
