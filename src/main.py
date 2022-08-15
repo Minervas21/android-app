@@ -27,7 +27,7 @@ kv="""
 			#halign:'center'
 			color:rgba('#FF8C00')
 		Image:
-			source:'data/pic5.jpg'
+			source:'src/data/pic5.jpg'
 			size_hint:.5,.5
 			pos_hint:{'center_x':.5,'center_y':.2}
 		MDRoundFlatIconButton:
