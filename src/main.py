@@ -15,32 +15,16 @@ from kivy.lang import Builder
 from kivymd.uix.screen import MDScreen
 
 from kivy.uix.label import Label
-kv="""
-<LoginScreen>:
-	MDFloatLayout:
-		md_bg_color:rgba('#000000')
-		MDLabel:
-			text:"Welcome To Minervas"
-			pos_hint:{'x':.3,'top':1.45}
-			text_size:cm(100),cm(100)
-			#size_hint:1.5,1.5
-			#halign:'center'
-			color:rgba('#FF8C00')
-		Image:
-			source:'src/data/pic5.jpg'
-			size_hint:.5,.5
-			pos_hint:{'center_x':.5,'center_y':.2}
-		MDRoundFlatIconButton:
-			icon:'google'
-			text:'LOGIN/SIGNUP'
-			pos_hint:{'center_x':.5}
-			on_release:root.signin()
-<IndexScreen>:
-	MDFloatLayout:
-		md_bg_color:rgba('#ffffff')
-		"""
 class LoginScreen(MDScreen):
-	pass
+	def signin(self):
+		PythonActivity = autoclass('org.renpy.android.PythonActivity')
+		Intent = autoclass('android.content.Intent')
+		Uri = autoclass('android.net.Uri')
+		intent = Intent()
+		intent.setAction(Intent.ACTION_VIEW)
+		intent.setData(Uri.parse('https://minervasapi.herokuapp.com/mobilelogin'))
+		currentActivity = cast('android.app.Activity', PythonActivity.mActivity)
+		currentActivity.startActivity(intent)
 class IndexScreen(MDScreen):
 	pass
 class MinervasApp(MDApp):
