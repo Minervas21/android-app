@@ -1,7 +1,7 @@
 
 #!python
 
-from kivy.app import App
+from kivymd.app import MDApp
 
 from kivy.core.window import Window
 
@@ -10,16 +10,22 @@ from kivy.clock import Clock, mainthread
 from kivy.logger import Logger
 
 from kivy.base import platform
+from kivy.uix.screenmanager import ScreenManager
+from kivymd.uix.screen import MDScreen
 
 from kivy.uix.label import Label
+class LoginScreen(MDScreen):
+	pass
 
-class TestApp(App):
+class MinervasApp(MDApp):
 
     processing_uri = False
 
     def build(self):
-
-        return Label()
+    		sm = ScreenManager()
+    		sm.add_widget(LoginScreen(name='login'))
+    		sm.current='login'
+    		return sm
 
     def on_start(self):
 
@@ -113,7 +119,7 @@ class TestApp(App):
 
 if __name__ == '__main__':
 
-    app_instance = TestApp()
+    app_instance = MinervasApp()
 
     if platform == 'android':
 
