@@ -15,6 +15,30 @@ from kivy.lang import Builder
 from kivymd.uix.screen import MDScreen
 
 from kivy.uix.label import Label
+kv="""
+<LoginScreen>:
+	MDFloatLayout:
+		md_bg_color:rgba('#000000')
+		MDLabel:
+			text:"Welcome To Minervas"
+			pos_hint:{'x':.3,'top':1.45}
+			text_size:cm(100),cm(100)
+			#size_hint:1.5,1.5
+			#halign:'center'
+			color:rgba('#FF8C00')
+		Image:
+			source:'data/pic5.jpg'
+			size_hint:.5,.5
+			pos_hint:{'center_x':.5,'center_y':.2}
+		MDRoundFlatIconButton:
+			icon:'google'
+			text:'LOGIN/SIGNUP'
+			pos_hint:{'center_x':.5}
+			on_release:root.signin()
+<IndexScreen>:
+	MDFloatLayout:
+		md_bg_color:rgba('#ffffff')
+		"""
 class LoginScreen(MDScreen):
 	pass
 class IndexScreen(MDScreen):
@@ -24,7 +48,7 @@ class MinervasApp(MDApp):
     processing_uri = False
 
     def build(self):
-    		Builder.load_file('minervas.kv')
+    		Builder.load_string(kv)
     		sm = ScreenManager()
     		sm.add_widget(LoginScreen(name='login'))
     		sm.add_widget(IndexScreen(name='index'))
