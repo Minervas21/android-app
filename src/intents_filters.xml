@@ -7,7 +7,7 @@
 </intent-filter>
 <!-- direct app scheme minervas:// -->
 <intent-filter>
-    <data android:scheme="minervas://" android:host="*"/>
+    <data android:scheme="minervas" android:host="*"/>
     <action android:name="android.intent.action.VIEW"/>
     <category android:name="android.intent.category.BROWSABLE"/>
     <category android:name="android.intent.category.DEFAULT"/>

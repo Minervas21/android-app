@@ -123,7 +123,7 @@ class MinervasApp(MDApp):
 
         Logger.info("URI INTENT FILTER: " + uri)
 
-        if uri == '':
+        if uri == '' or token == None:
         	pass
         else:
         	self.token= uri
