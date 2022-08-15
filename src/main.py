@@ -1,4 +1,3 @@
-
 #!python
 from jnius import cast
 from jnius import autoclass
@@ -18,7 +17,7 @@ from kivymd.uix.screen import MDScreen
 from kivy.uix.label import Label
 class LoginScreen(MDScreen):
 	def signin(self):
-		PythonActivity = autoclass('org.renpy.android.PythonActivity')
+		PythonActivity = autoclass('org.kivy.android.PythonActivity')
 		Intent = autoclass('android.content.Intent')
 		Uri = autoclass('android.net.Uri')
 		intent = Intent()
