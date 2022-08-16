@@ -123,7 +123,7 @@ class MinervasApp(MDApp):
 
         Logger.info("URI INTENT FILTER: " + uri)
         #later on, id add a check to see if a token already exists.
-        if uri == '':
+        if uri == '' or self.token==None:
         	pass
         else:
         	self.token= uri
