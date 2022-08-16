@@ -28,11 +28,11 @@ class LoginScreen(MDScreen):
 class IndexScreen(MDScreen):
 	pass
 sm = ScreenManager(transition=SwapTransition())
+token=None
 class MinervasApp(MDApp):
 
     processing_uri = False
     path=os.path.dirname(os.path.abspath(__file__))
-    token=None
 
     def build(self):
     		Builder.load_file(self.path+'/minervas.kv')
@@ -123,10 +123,12 @@ class MinervasApp(MDApp):
 
         Logger.info("URI INTENT FILTER: " + uri)
         #later on, id add a check to see if a token already exists.
-        if uri == '' or self.token==None:
+        if uri == '' or token==None:
         	pass
         else:
-        	self.token= uri
+        	from urllib import parse
+        	parse.urlsplit(uri)
+        	token=parse.parse_qs(parse.urlsplit(url).query).get('token',[''])[0]
         	sm.current='index'
         	
 if __name__ == '__main__':
