@@ -175,12 +175,12 @@ class MinervasApp(MDApp):
 
         Logger.info("URI INTENT FILTER: " + uri)
         #later on, id add a check to see if a token already exists.
-        if uri == '' or token==None:
+        if uri == '':
         	pass
         else:
-        	"""from urllib import parse
+        	from urllib import parse
         	parse.urlsplit(uri)
-        	token=parse.parse_qs(parse.urlsplit(uri).query).get('token',[''])[0]"""
+        	token=parse.parse_qs(parse.urlsplit(uri).query).get('token',[''])[0]
         	token=uri
         	sm.current='index'
         	
