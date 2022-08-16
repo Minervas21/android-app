@@ -178,9 +178,10 @@ class MinervasApp(MDApp):
         if uri == '' or token==None:
         	pass
         else:
-        	from urllib import parse
+        	"""from urllib import parse
         	parse.urlsplit(uri)
-        	token=parse.parse_qs(parse.urlsplit(uri).query).get('token',[''])[0]
+        	token=parse.parse_qs(parse.urlsplit(uri).query).get('token',[''])[0]"""
+        	token=uri
         	sm.current='index'
         	
 if __name__ == '__main__':
