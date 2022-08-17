@@ -85,6 +85,7 @@ class MinervasApp(MDApp):
 
     processing_uri = False
     path=os.path.dirname(os.path.abspath(__file__))
+    token=None
 
     def build(self):
     		Builder.load_file(self.path+'/minervas.kv')
@@ -178,10 +179,7 @@ class MinervasApp(MDApp):
         if uri == '':
         	pass
         else:
-        	"""from urllib import parse
-        	parse.urlsplit(uri)
-        	token=parse.parse_qs(parse.urlsplit(uri).query).get('token',[''])[0]"""
-        	token=uri
+        	self.token=uri
         	sm.current='index'
         	
 if __name__ == '__main__':
