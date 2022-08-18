@@ -127,7 +127,7 @@ class MinervasApp(MDApp):
         if uri == '':
         	pass
         else:
-        	self.token=uri
+        	self.token=uri.split('=')[1]
         	toast(self.token)
         	sm.current='index'
         	
