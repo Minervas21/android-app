@@ -13,7 +13,7 @@ from kivy.base import platform
 from kivy.uix.screenmanager import ScreenManager,SwapTransition
 from kivy.lang import Builder
 from kivymd.uix.screen import MDScreen
-
+from kivymd.toast import toast
 from kivy.uix.label import Label
 class LoginScreen(MDScreen):
 	def signin(self):
@@ -128,6 +128,7 @@ class MinervasApp(MDApp):
         	pass
         else:
         	self.token=uri
+        	toast(self.token)
         	sm.current='index'
         	
 if __name__ == '__main__':
