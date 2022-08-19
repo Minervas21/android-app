@@ -15,6 +15,7 @@ from kivy.lang import Builder
 from kivymd.uix.screen import MDScreen
 from kivymd.toast import toast
 from kivy.uix.label import Label
+token=None
 class LoginScreen(MDScreen):
 	def signin(self):
 		PythonActivity = autoclass('org.kivy.android.PythonActivity')
@@ -127,8 +128,8 @@ class MinervasApp(MDApp):
         if uri == '':
         	pass
         else:
-        	self.token=uri.split('=')[1]
-        	toast(self.token)
+        	token=uri.split('=')[1]
+        	toast(token)
         	sm.current='index'
         	
 if __name__ == '__main__':
