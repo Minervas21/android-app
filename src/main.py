@@ -58,10 +58,8 @@ class IndexScreen(MDScreen):
 		self.ids.email.text=self.email
 		#toast(resp['Gender'])
 	def on_enter(self):
-		import requests
-		from requests.structures import CaseInsensitiveDict
 		url = "https://minervasapi.herokuapp.com/get_info"
-		headers = CaseInsensitiveDict()
+		headers ={}
 		headers["Accept"] = "application/json"
 		headers["Authorization"] = f"Bearer {token}"
 		#headers["Content-Type"] = "application/json"
