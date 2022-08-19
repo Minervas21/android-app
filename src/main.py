@@ -2,13 +2,13 @@
 from jnius import cast
 from jnius import autoclass
 from kivymd.app import MDApp
-
+from kivymd.uix.floatlayout import MDFloatLayout
 from kivy.core.window import Window
-
+from kivy.properties import ObjectProperty
 from kivy.clock import Clock, mainthread
-
+from kivy.uix.boxlayout import BoxLayout
 from kivy.logger import Logger
-
+from kivy.network.urlrequest import UrlRequest
 from kivy.base import platform
 from kivy.uix.screenmanager import ScreenManager,SwapTransition
 from kivy.lang import Builder
@@ -26,8 +26,6 @@ class LoginScreen(MDScreen):
 		intent.setData(Uri.parse('https://minervasapi.herokuapp.com/mobilelogin'))
 		currentActivity = cast('android.app.Activity', PythonActivity.mActivity)
 		currentActivity.startActivity(intent)
-class IndexScreen(MDScreen):
-	pass
 sm = ScreenManager(transition=SwapTransition())
 token=None
 class MinervasApp(MDApp):
