@@ -4,7 +4,7 @@ from jnius import autoclass
 from kivymd.app import MDApp
 from kivymd.uix.floatlayout import MDFloatLayout
 from kivy.core.window import Window
-#from kivy.properties import ObjectProperty
+from kivy.properties import ObjectProperty
 from kivy.clock import Clock, mainthread
 from kivy.uix.boxlayout import BoxLayout
 from kivy.logger import Logger
@@ -15,6 +15,7 @@ from kivy.lang import Builder
 from kivymd.uix.screen import MDScreen
 from kivymd.toast import toast
 from kivy.uix.label import Label
+import certifi
 sm = ScreenManager(transition=SwapTransition())
 token=None
 class IndexScreen(MDScreen):
@@ -66,7 +67,7 @@ class IndexScreen(MDScreen):
 		#headers["Content-Type"] = "application/json"
 		data="{}"
 		#resp = requests.get(url, headers=headers)
-		resp=UrlRequest(url,self.gotten_info,req_headers=headers)
+		resp=UrlRequest(url,self.gotten_info,req_headers=headers,ca_file=certifi.where())
 class LoginScreen(MDScreen):
 	def signin(self):
 		PythonActivity = autoclass('org.kivy.android.PythonActivity')
@@ -84,10 +85,10 @@ class MinervasApp(MDApp):
     token=None
 
     def build(self):
-    		Builder.load_file(self.path+'/minervas.kv')
+    		Builder.load_file(self.path+'/main.kv')
     		sm.add_widget(LoginScreen(name='login'))
     		sm.add_widget(IndexScreen(name='index'))
-    		sm.current='index'
+    		sm.current='login'
     		return sm
 
     def on_start(self):
@@ -187,7 +188,7 @@ if __name__ == '__main__':
 
         import android.activity
 
-        #android.activity.bind(on_new_intent=app_instance.android_message)
+        android.activity.bind(on_new_intent=app_instance.android_message)
 
     elif platform == 'ios':
 
