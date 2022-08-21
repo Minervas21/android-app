@@ -38,97 +38,63 @@
 			color:rgba('#1c277b')
 			pos_hint:{'center_x':.5,'center_y':.5}
 		Screen:
-
-    MDToolbar:
-        id: toolbar
-        pos_hint: {"top": 1}
-        elevation: 10
-        md_bg_color:rgba('#1c277b')
-        title: "Minervas"
-        left_action_items: [["menu", lambda x: nav_drawer.set_state("open")]]
-
-    MDNavigationLayout:
-        x: toolbar.height
-
-        ScreenManager:
-            id: screen_manager
-
-            Screen:
-                name: "scr 1"
-
-                MDLabel:
-                    text: "Screen 1"
-                    halign: "center"
-
-            Screen:
-                name: "scr 2"
-
-                MDLabel:
-                    text: "Screen 2"
-                    halign: "center"
-
-        MDNavigationDrawer:
-            id: nav_drawer
-            MDBoxLayout:
-                orientation: "vertical"
-                padding: "8dp"
-                spacing: "8dp"
-                pos_hint:{'top':1.0}
-                screen_manager:screen_manager
-                nav_drawer: nav_drawer
-                AnchorLayout:
-                	anchor_x: "left"
-                	size_hint_y: None
-                	pos_hint:{'top':1}
-                	height: avatar.height
-                	AsyncImage:
-                		id: avatar
-                		size_hint: None, None
-                		size: "56dp", "56dp"
-                		source: app.path+"/data/user.png"
-                MDLabel:
-                	text: "KivyMD library"
-                	font_style: "Button"
-                	id:name
-                	pos_hint:{'top':.94}
-                	size_hint_y: None
-                	height: self.texture_size[1]
-                MDLabel:
-                	id:email
-                	text:"kivydevelopment@gmail.com"
-                	font_style: "Caption"
-                	pos_hint:{'top':.92}
-                	size_hint_y: None
-                	height: self.texture_size[1]
-                #MDLabel:
-                	#text:'_'*50
-                	#pos_hint:{'top':1.5}
-                	#font_style:'Caption'
-                	#height: self.texture_size[1]
-                ScrollView:
-                	MDList:
-                		id:all_fields
-                		OneLineAvatarListItem:
-                			text:'Edit Info'
-                			IconLeftWidget:
-                				icon:'language-python'
-                		OneLineAvatarListItem:
-                			text:'Questions'
-                			IconLeftWidget:
-                				icon:'language-python'
-                		OneLineAvatarListItem:
-                			text:'Class Schedule'
-                			IconLeftWidget:
-                				icon:'language-python'
-                		OneLineAvatarListItem:
-                			text:'Attendance'
-                			IconLeftWidget:
-                				icon:'language-python'
-                		OneLineAvatarListItem:
-                			text:'Study Schedule'
-                			IconLeftWidget:
-                				icon:'language-python'
-                		OneLineAvatarListItem:
-                			text:'Logout'
-                			IconLeftWidget:
-                				icon:'language-python'
+		      MDToolbar:
+		      	id: toolbar
+		      	pos_hint: {"top": 1}
+		      	elevation: 10
+		      	md_bg_color:rgba('#1c277b')
+		      	title: "Minervas"
+		      	left_action_items: [["menu", lambda x: nav_drawer.set_state("open")]]
+		      MDNavigationLayout:
+		      	x: toolbar.height
+		      	ScreenManager:
+		      		id: screen_manager
+		      		Screen:
+		      			name: "scr 1"
+		      			MDLabel:
+		      			    text: "Screen 1"
+		      			    halign: "center"
+		      		Screen:
+		      			name: "scr 2"
+		      			MDLabel:
+		      			    text: "Screen 2"
+		      			    halign: "center"
+		      	MDNavigationDrawer:
+		      	   id: nav_drawer
+		      	   MDBoxLayout:
+		      	       nav_drawer: nav_drawer
+		      	       screen_manager: screen_manager
+		      	       orientation: "vertical"
+		      	       padding: "8dp"
+		      	       spacing: "8dp"
+		      	       pos_hint:{'top':1.0}
+		      	       AnchorLayout:
+		      	       	anchor_x: "left"
+		      	       	size_hint_y: None
+		      	       	pos_hint:{'top':1}
+		      	       	height: avatar.height
+		      	       	AsyncImage:
+		      	       		id: avatar
+		      	       		size_hint: None, None
+		      	       		size: "56dp", "56dp"
+		      	       		source: app.path+"/data/user.png"
+		      	       	MDLabel:
+		      	       		text: "KivyMD library"
+		      	       		font_style: "Button"
+		      	       		id:name
+		      	       		pos_hint:{'top':.94}
+		      	       		size_hint_y: None
+		      	       		height: self.texture_size[1]
+		      	       	MDLabel:
+		      	       		id:email
+		      	       		text:"kivydevelopment@gmail.com"
+		      	       		font_style: "Caption"
+		      	       		pos_hint:{'top':.92}
+		      	       		size_hint_y: Nonheight: self.texture_size[1]
+		      	      ScrollView:
+		      	       	MDList:
+		      	       		id:all_fields
+		      	       		OneLineAvatarListItem:
+		      	       			text:'Info'
+		      	       			IconLeftWidget:
+		      	       				icon:'language-python'

@@ -4,7 +4,7 @@ from jnius import autoclass
 from kivymd.app import MDApp
 from kivymd.uix.floatlayout import MDFloatLayout
 from kivy.core.window import Window
-from kivy.properties import ObjectProperty
+#from kivy.properties import ObjectProperty
 from kivy.clock import Clock, mainthread
 from kivy.uix.boxlayout import BoxLayout
 from kivy.logger import Logger
@@ -15,8 +15,12 @@ from kivy.lang import Builder
 from kivymd.uix.screen import MDScreen
 from kivymd.toast import toast
 from kivy.uix.label import Label
+sm = ScreenManager(transition=SwapTransition())
 token=None
 class IndexScreen(MDScreen):
+<<<<<<< HEAD
+	pass
+=======
 	gender=None
 	email=None
 	full_name=None
@@ -58,26 +62,27 @@ class IndexScreen(MDScreen):
 		self.ids.email.text=self.email
 		#toast(resp['Gender'])
 	def on_enter(self):
+		import requests
+		from requests.structures import CaseInsensitiveDict
 		url = "https://minervasapi.herokuapp.com/get_info"
-		headers ={}
+		headers = CaseInsensitiveDict()
 		headers["Accept"] = "application/json"
 		headers["Authorization"] = f"Bearer {token}"
 		#headers["Content-Type"] = "application/json"
 		data="{}"
 		#resp = requests.get(url, headers=headers)
 		resp=UrlRequest(url,self.gotten_info,req_headers=headers)
+>>>>>>> parent of 097d6aa (removed requests dependency)
 class LoginScreen(MDScreen):
 	def signin(self):
-		PythonActivity = autoclass('org.kivy.android.PythonActivity')
+		"""PythonActivity = autoclass('org.kivy.android.PythonActivity')
 		Intent = autoclass('android.content.Intent')
 		Uri = autoclass('android.net.Uri')
 		intent = Intent()
 		intent.setAction(Intent.ACTION_VIEW)
 		intent.setData(Uri.parse('https://minervasapi.herokuapp.com/mobilelogin'))
 		currentActivity = cast('android.app.Activity', PythonActivity.mActivity)
-		currentActivity.startActivity(intent)
-sm = ScreenManager(transition=SwapTransition())
-token=None
+		currentActivity.startActivity(intent)"""
 class MinervasApp(MDApp):
 
     processing_uri = False
@@ -88,7 +93,7 @@ class MinervasApp(MDApp):
     		Builder.load_file(self.path+'/minervas.kv')
     		sm.add_widget(LoginScreen(name='login'))
     		sm.add_widget(IndexScreen(name='index'))
-    		sm.current='login'
+    		sm.current='index'
     		return sm
 
     def on_start(self):
@@ -101,13 +106,13 @@ class MinervasApp(MDApp):
 
         from jnius import autoclass
 
-        PythonActivity = autoclass('org.kivy.android.PythonActivity')
+        """PythonActivity = autoclass('org.kivy.android.PythonActivity')
 
         activity = PythonActivity.mActivity
 
         intent = activity.getIntent()
 
-        self.android_message(intent)
+        self.android_message(intent)"""
 
     def on_pause(self):
 
@@ -188,7 +193,7 @@ if __name__ == '__main__':
 
         import android.activity
 
-        android.activity.bind(on_new_intent=app_instance.android_message)
+        #android.activity.bind(on_new_intent=app_instance.android_message)
 
     elif platform == 'ios':
 
