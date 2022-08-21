@@ -1,0 +1,32 @@
+<LoginScreen>:
+	MDFloatLayout:
+		md_bg_color:rgba('#1c277b')
+		MDLabel:
+			text:"Welcome To Minervas"
+			pos_hint:{'top':1.40}
+			font_style:'H5'
+			halign:'center'
+			valign:'top'
+			text_size:cm(100),cm(100)
+			#size_hint:1.5,1.5
+			#halign:'center'
+			color:rgba('#FF8C00')
+		MDLabel:
+			text:"Sign up below to access the great academic experience"
+			pos_hint:{'top':1.35}
+			color:rgba('#ffffff')
+			font_style:'Caption'
+			halign:'center'
+		Image:
+			source:app.path+'/data/pic5.png'
+			size_hint:1.2,1.2
+			pos_hint:{'center_x':.4,'center_y':.25}
+		MDFillRoundFlatIconButton:
+			icon:'google'
+			text:'LOGIN/SIGNUP'
+			pos_hint:{'center_x':.5,'center_y':.1}
+			on_release:root.signin()
+			md_bg_color:rgba('#e95032')
+<IndexScreen>:
+	MDFloatLayout:
+		md_bg_color:rgba('#ffffff')

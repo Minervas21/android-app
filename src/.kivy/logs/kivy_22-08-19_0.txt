@@ -1,0 +1,36 @@
+[INFO   ] Logger: Record log in /storage/emulated/0/mapp/src/.kivy/logs/kivy_22-08-19_0.txt
+[INFO   ] Kivy: v2.0.0
+[INFO   ] Kivy: Installed at "/data/user/0/ru.iiec.pydroid3/files/aarch64-linux-android/lib/python3.9/site-packages/kivy/__init__.py"
+[INFO   ] Python: v3.9.7 (default, Oct  6 2021, 01:34:26) 
+[GCC 11.1.0]
+[INFO   ] Python: Interpreter at "/data/user/0/ru.iiec.pydroid3/files/aarch64-linux-android/bin/python3"
+[INFO   ] KivyMD: 0.104.2, git-bc7d1f5, 2021-06-06 (installed at "/data/user/0/ru.iiec.pydroid3/files/aarch64-linux-android/lib/python3.9/site-packages/kivymd/__init__.py")
+[INFO   ] Factory: 186 symbols loaded
+[INFO   ] Image: Providers: img_tex, img_dds, img_sdl2, img_pil (img_ffpyplayer ignored)
+[INFO   ] Text: Provider: sdl2
+[INFO   ] Window: Provider: sdl2
+[INFO   ] GL: Using the "OpenGL ES 2" graphics system
+[INFO   ] GL: Backend used <sdl2>
+[INFO   ] GL: OpenGL version <b'OpenGL ES 3.2 v1.r26p0-01eac0.035aefc9426b37ec2259de8e3dc4e984'>
+[INFO   ] GL: OpenGL vendor <b'ARM'>
+[INFO   ] GL: OpenGL renderer <b'Mali-G52 MC2'>
+[INFO   ] GL: OpenGL parsed version: 3, 2
+[INFO   ] GL: Texture max size <8192>
+[INFO   ] GL: Texture max units <16>
+[INFO   ] Window: auto add sdl2 input provider
+[INFO   ] Window: virtual keyboard not allowed, single mode, not docked
+[INFO   ] GL: NPOT texture support is available
+[WARNING] stderr: Traceback (most recent call last):
+[WARNING] stderr:   File "/storage/emulated/0/mapp/src/main.py", line 193, in <module>
+[WARNING] stderr:     android.activity.bind(on_new_intent=app_instance.android_message)
+[WARNING] stderr:   File "/data/user/0/ru.iiec.pydroid3/files/aarch64-linux-android/lib/python3.9/site-packages/android/activity.py", line 43, in bind
+[WARNING] stderr:     listener = NewIntentListener(callback)
+[WARNING] stderr:   File "/data/user/0/ru.iiec.pydroid3/files/aarch64-linux-android/lib/python3.9/site-packages/android/activity.py", line 17, in __init__
+[WARNING] stderr:     super().__init__(**kwargs)
+[WARNING] stderr:   File "jnius/jnius_proxy.pxi", line 28, in jnius.jnius.PythonJavaClass.__init__
+[WARNING] stderr:   File "jnius/jnius_proxy.pxi", line 34, in jnius.jnius.PythonJavaClass._init_j_self_ptr
+[WARNING] stderr:   File "jnius/jnius_proxy.pxi", line 182, in jnius.jnius.create_proxy_instance
+[WARNING] stderr:   File "jnius/jnius_export_class.pxi", line 856, in jnius.jnius.JavaMethod.__call__
+[WARNING] stderr:   File "jnius/jnius_export_class.pxi", line 1028, in jnius.jnius.JavaMethod.call_staticmethod
+[WARNING] stderr:   File "jnius/jnius_utils.pxi", line 91, in jnius.jnius.check_exception
+[WARNING] stderr: jnius.jnius.JavaException: JVM exception occurred: interface org.kivy.android.PythonActivity$NewIntentListener is not visible from class loader java.lang.IllegalArgumentException

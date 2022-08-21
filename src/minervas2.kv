@@ -1,0 +1,101 @@
+#:import MDDropdownMenu kivymd.uix.menu
+<LoginScreen>:
+	MDFloatLayout:
+		md_bg_color:rgba('#1c277b')
+		MDLabel:
+			text:"Welcome To Minervas"
+			pos_hint:{'top':1.40}
+			font_style:'H5'
+			halign:'center'
+			valign:'top'
+			text_size:cm(100),cm(100)
+			#size_hint:1.5,1.5
+			#halign:'center'
+			color:rgba('#FF8C00')
+		MDLabel:
+			text:"Sign up below to access the great academic experience"
+			pos_hint:{'top':1.35}
+			color:rgba('#ffffff')
+			font_style:'Caption'
+			halign:'center'
+		Image:
+			source:app.path+'/data/pic5.png'
+			size_hint:1.2,1.2
+			pos_hint:{'center_x':.4,'center_y':.25}
+		MDFillRoundFlatIconButton:
+			icon:'google'
+			text:'LOGIN/SIGNUP'
+			pos_hint:{'center_x':.5,'center_y':.1}
+			on_release:root.signin()
+			md_bg_color:rgba('#e95032')
+<IndexScreen>:
+	MDFloatLayout:
+		md_bg_color:rgba('#ffffff')
+		MDSpinner:
+			id:spinner
+			active: True
+			size_hint:.3,.3
+			color:rgba('#1c277b')
+			pos_hint:{'center_x':.5,'center_y':.5}
+		Screen:
+		    MDToolbar:
+		        id: toolbar
+		        pos_hint: {"top": 1}
+		        elevation: 10
+		        md_bg_color:rgba('#1c277b')
+		        title: "Minervas"
+		        left_action_items: [["menu", lambda x: nav_drawer.set_state("open")]]
+		    MDNavigationLayout:
+		        x: toolbar.height
+		        ScreenManager:
+		            id: screen_manager
+		            Screen:
+		      	      name: "scr 1"
+		      	      MDLabel:
+		      		      text: "Screen 1"
+		      			  halign: "center"
+		      	  Screen:
+		      	      name: "scr 2"
+		      	      MDLabel:
+		      		      text: "Screen 2"
+		      			  halign: "center"
+		        MDNavigationDrawer:
+		            id: nav_drawer
+		      	  MDBoxLayout:
+		      	      nav_drawer: nav_drawer
+		      	      screen_manager: screen_manager
+		      	      orientation: "vertical"
+		      	      padding: "8dp"
+		      	      spacing: "8dp"
+		      	      pos_hint:{'top':1.0}
+		      	      AnchorLayout:
+		      	          anchor_x: "left"
+		      	          size_hint_y: None
+		      	          pos_hint:{'top':1}
+		      	          height: avatar.height
+		      	          AsyncImage:
+		      	              id: avatar
+		      	       	   size_hint: None, None
+		      	       	   size: "56dp", "56dp"
+		      	       	   source: app.path+"/data/user.png"
+		      	          MDLabel:
+		      	              text: "KivyMD library"
+		      	       	   font_style: "Button"
+		      	       	   id:name
+		      	       	   pos_hint:{'top':.94}
+		      	       	   size_hint_y: None
+		      	       	   height: self.texture_size[1]
+		      	          MDLabel:
+		      	              id:email
+		      	              text:"kivydevelopment@gmail.com"
+		      	              font_style: "Caption"
+		      	              pos_hint:{'top':.92}
+		      	              size_hint_y:None
+		      	              height: self.texture_size[1]
+		      	          ScrollView:
+		      	          	MDList:
+		      	          		id:all_fields
+		      	          		OneLineAvatarListItem:
+		      	          			text:'Info'
+		      	          			IconLeftWidget:
+		      	          				icon:'language-python'
