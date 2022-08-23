@@ -38,9 +38,11 @@ class IndexScreen(MDScreen):
 	def error1(self,req,result):
 		#print(result)
 		toast(str(result))
+		toast(str(token))
 	def faliure(self,req,result):
 		#print(result)
 		toast(str(result))
+		toast(str(token))
 	def gotten_info(self,req,result):
 		print(result)
 		#resp=json.loads(result.decode())
