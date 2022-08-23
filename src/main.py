@@ -35,6 +35,10 @@ class IndexScreen(MDScreen):
 	verified=None
 	nav_drawer = ObjectProperty()
 	screen_manager = ObjectProperty()
+	def error(self,):
+		pass
+	def faliure(self,):
+		pass
 	def gotten_info(self,req,result):
 		print(result)
 		#resp=json.loads(result.decode())
@@ -67,7 +71,7 @@ class IndexScreen(MDScreen):
 		#headers["Content-Type"] = "application/json"
 		data="{}"
 		#resp = requests.get(url, headers=headers)
-		resp=UrlRequest(url,self.gotten_info,req_headers=headers,ca_file=certifi.where())
+		resp=UrlRequest(url,on_success=self.gotten_info,on_error=self.error1,on_faliure=self.faliure,req_headers=headers,ca_file=certifi.where())
 class LoginScreen(MDScreen):
 	def signin(self):
 		PythonActivity = autoclass('org.kivy.android.PythonActivity')
@@ -82,7 +86,6 @@ class MinervasApp(MDApp):
 
     processing_uri = False
     path=os.path.dirname(os.path.abspath(__file__))
-    token=None
 
     def build(self):
     		Builder.load_file(self.path+'/main.kv')
