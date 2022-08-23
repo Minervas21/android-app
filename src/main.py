@@ -93,7 +93,7 @@ class MinervasApp(MDApp):
     		Builder.load_file(self.path+'/main.kv')
     		sm.add_widget(LoginScreen(name='login'))
     		sm.add_widget(IndexScreen(name='index'))
-    		sm.current='index'
+    		sm.current='login'
     		return sm
 
     def on_start(self):
