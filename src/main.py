@@ -185,7 +185,7 @@ class MinervasApp(MDApp):
         else:
         	global token
         	token=uri.split('=')[1]
-        	toast(token)
+        	#toast(token)
         	sm.current='index'
         	
 if __name__ == '__main__':
