@@ -1,0 +1,51 @@
+[INFO   ] Logger: Record log in /storage/emulated/0/mapp/src/.kivy/logs/kivy_22-08-25_1.txt
+[INFO   ] Kivy: v2.0.0
+[INFO   ] Kivy: Installed at "/data/user/0/ru.iiec.pydroid3/files/aarch64-linux-android/lib/python3.9/site-packages/kivy/__init__.py"
+[INFO   ] Python: v3.9.7 (default, Oct  6 2021, 01:34:26) 
+[GCC 11.1.0]
+[INFO   ] Python: Interpreter at "/data/user/0/ru.iiec.pydroid3/files/aarch64-linux-android/bin/python3"
+[INFO   ] KivyMD: 0.104.2, git-bc7d1f5, 2021-06-06 (installed at "/data/user/0/ru.iiec.pydroid3/files/aarch64-linux-android/lib/python3.9/site-packages/kivymd/__init__.py")
+[INFO   ] Factory: 186 symbols loaded
+[INFO   ] Image: Providers: img_tex, img_dds, img_sdl2, img_pil (img_ffpyplayer ignored)
+[INFO   ] Text: Provider: sdl2
+[INFO   ] Window: Provider: sdl2
+[INFO   ] GL: Using the "OpenGL ES 2" graphics system
+[INFO   ] GL: Backend used <sdl2>
+[INFO   ] GL: OpenGL version <b'OpenGL ES 3.2 v1.r26p0-01eac0.035aefc9426b37ec2259de8e3dc4e984'>
+[INFO   ] GL: OpenGL vendor <b'ARM'>
+[INFO   ] GL: OpenGL renderer <b'Mali-G52 MC2'>
+[INFO   ] GL: OpenGL parsed version: 3, 2
+[INFO   ] GL: Texture max size <8192>
+[INFO   ] GL: Texture max units <16>
+[INFO   ] Window: auto add sdl2 input provider
+[INFO   ] Window: virtual keyboard not allowed, single mode, not docked
+[INFO   ] GL: NPOT texture support is available
+[INFO   ] Loader: using a thread pool of 2 workers
+[ERROR  ] AsyncImage: Not found </storage/emulated/0/mapp/src/data/user.png>
+[WARNING] Base: Unknown <android> provider
+[INFO   ] Base: Start application main loop
+[INFO   ] Base: Leaving application in progress...
+[WARNING] stderr: Traceback (most recent call last):
+[WARNING] stderr:   File "/storage/emulated/0/mapp/src/main.py", line 239, in <module>
+[WARNING] stderr:     app_instance.run()
+[WARNING] stderr:   File "/data/user/0/ru.iiec.pydroid3/files/aarch64-linux-android/lib/python3.9/site-packages/kivy/app.py", line 950, in run
+[WARNING] stderr:     runTouchApp()
+[WARNING] stderr:   File "/data/user/0/ru.iiec.pydroid3/files/aarch64-linux-android/lib/python3.9/site-packages/kivy/base.py", line 582, in runTouchApp
+[WARNING] stderr:     EventLoop.mainloop()
+[WARNING] stderr:   File "/data/user/0/ru.iiec.pydroid3/files/aarch64-linux-android/lib/python3.9/site-packages/kivy/base.py", line 347, in mainloop
+[WARNING] stderr:     self.idle()
+[WARNING] stderr:   File "/data/user/0/ru.iiec.pydroid3/files/aarch64-linux-android/lib/python3.9/site-packages/kivy/base.py", line 387, in idle
+[WARNING] stderr:     Clock.tick()
+[WARNING] stderr:   File "/data/user/0/ru.iiec.pydroid3/files/aarch64-linux-android/lib/python3.9/site-packages/kivy/clock.py", line 733, in tick
+[WARNING] stderr:     self.post_idle(ts, self.idle())
+[WARNING] stderr:   File "/data/user/0/ru.iiec.pydroid3/files/aarch64-linux-android/lib/python3.9/site-packages/kivy/clock.py", line 776, in post_idle
+[WARNING] stderr:     self._process_events()
+[WARNING] stderr:   File "kivy/_clock.pyx", line 616, in kivy._clock.CyClockBase._process_events
+[WARNING] stderr:   File "kivy/_clock.pyx", line 649, in kivy._clock.CyClockBase._process_events
+[WARNING] stderr:   File "kivy/_clock.pyx", line 645, in kivy._clock.CyClockBase._process_events
+[WARNING] stderr:   File "kivy/_clock.pyx", line 218, in kivy._clock.ClockEvent.tick
+[WARNING] stderr:   File "/data/user/0/ru.iiec.pydroid3/files/aarch64-linux-android/lib/python3.9/site-packages/kivy/network/urlrequest.py", line 547, in _dispatch_result
+[WARNING] stderr:     func(self, data)
+[WARNING] stderr:   File "/storage/emulated/0/mapp/src/main.py", line 44, in error1
+[WARNING] stderr:     return MDDialog(text="Check your internet connection and try again.",on_dismiss=self.exit,radius=[20,0,20,0],buttons=[MDFlatButton(text="Exit",on_release=self.exit)]).open()
+[WARNING] stderr: NameError: name 'MDDialog' is not defined

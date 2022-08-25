@@ -9,12 +9,16 @@ from kivy.clock import Clock, mainthread
 from kivy.uix.boxlayout import BoxLayout
 from kivy.logger import Logger
 from kivy.network.urlrequest import UrlRequest
+from kivymd.uix.dialog import MDDialog
+from kivymd.uix.snackbar import Snackbar
 from kivy.base import platform
 from kivy.uix.screenmanager import ScreenManager,SwapTransition
 from kivy.lang import Builder
 from kivymd.uix.screen import MDScreen
 from kivymd.toast import toast
 from kivy.uix.label import Label
+from kivymd.uix.button import MDFlatButton
+from kivymd.uix.label import MDLabel
 import certifi
 sm = ScreenManager(transition=SwapTransition())
 token=None
@@ -35,14 +39,51 @@ class IndexScreen(MDScreen):
 	verified=None
 	nav_drawer = ObjectProperty()
 	screen_manager = ObjectProperty()
+	def exit(self,*args):
+		MinervasApp().stop()
+	def relogin(self,*args):
+		sm.current='login'
 	def error1(self,req,result):
-		#print(result)
-		toast(str(result))
-		toast(str(token))
+		self.ids.spinner.active=False
+		return MDDialog(text="Check your internet connection and try again.",on_dismiss=self.exit,radius=[20,0,20,0],buttons=[MDFlatButton(text="Exit",on_release=self.exit)]).open()
 	def faliure(self,req,result):
-		#print(result)
-		toast(str(result))
-		toast(str(token))
+		status=req._resp_status
+		if(status==401 or status==422):
+			snackbar=Snackbar(text='Token expired or absent.')
+			snackbar.buttons=[MDFlatButton(text='Exit',on_release=self.exit),MDFlatButton(text='Login Again',on_press=snackbar.dismiss and self.relogin)]
+			snackbar.open()
+			self.ids.spinner.active=False
+		elif(status==500):
+			snackbar=Snackbar(text='Internal server error. The error has been received and would be adressed shortly.')
+			snackbar.open()
+			self.ids.spinner.active=False
+	def add_swiper(self,req,result):
+		print(result)
+		from kivymd.uix.swiper import MDSwiperItem
+		from kivymd.uix.toolbar import MDToolbar
+		from kivymd.uix.card import MDCard
+		from kivy.utils import get_color_from_hex
+		data=result.get('data')
+		#later on, check scheduled date before adding.
+		for key in data:
+			print(key)
+			print(data[key])
+			value=data[key]
+			si=MDSwiperItem()
+			title=MDToolbar(title="Class Schedule Update",md_bg_color=get_color_from_hex('#FF8C00'))
+			title.ids.label_title.font_size='15sp'
+			course=MDLabel(text="Course: "+value['course'],font_style="H6",valign='top',pos_hint={'top':1.4},color=get_color_from_hex('#FF8C00'))
+			time=MDLabel(text="Time: "+value['time'],font_style="H6",valign='top',pos_hint={'top':1.2},color=get_color_from_hex('#FF8C00'))
+			additional_info=MDLabel(text=value['additional_info'],font_style="H6",valign='top',pos_hint={'top':1.0},color=get_color_from_hex('#FF8C00'))
+			card=MDCard(orientation='vertical',elevation=0,padding='8dp',md_bg_color=get_color_from_hex('#1c6a7b'),radius=[20,20,20,20])
+			card_=MDCard(orientation='vertical',elevation=0,md_bg_color=get_color_from_hex('#1c6a7b'), pos_hint={'top':2.5})
+			card.add_widget(title)
+			card_.add_widget(course)
+			card_.add_widget(time)
+			card_.add_widget(additional_info)
+			card.add_widget(card_)
+			si.add_widget(card)
+			self.ids.zoom.add_widget(si)
 	def gotten_info(self,req,result):
 		print(result)
 		#resp=json.loads(result.decode())
@@ -76,6 +117,7 @@ class IndexScreen(MDScreen):
 		data="{}"
 		#resp = requests.get(url, headers=headers)
 		resp=UrlRequest(url,on_success=self.gotten_info,on_error=self.error1,on_failure=self.faliure,req_headers=headers,ca_file=certifi.where())
+		resp2=UrlRequest('https://minervasapi.herokuapp.com/class_schedule/get',on_success=self.add_swiper,on_failure=self.faliure,on_error=self.error1,req_headers=headers,ca_file=certifi.where())
 class LoginScreen(MDScreen):
 	def signin(self):
 		PythonActivity = autoclass('org.kivy.android.PythonActivity')
